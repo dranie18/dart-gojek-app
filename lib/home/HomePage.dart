@@ -72,26 +72,36 @@ class _HomePageState extends State<HomePage> {
       title: "GO-TIX",
     ));
 
+
+
+  }
+
+  Future<List<Food>> fetchFood() async {
+    List<Food> _goFeaturedFoodList = [];
     _goFeaturedFoodList.add(new Food(
-            title: "Steak Andakar",
-            image: "assets/images/food_1.jpg"
-        ));
+        title: "Steak Andakar",
+        image: "assets/images/food_1.jpg"
+    ));
     _goFeaturedFoodList.add(new Food(
         title: "Mie Ayam Tumini",
         image: "assets/images/food_2.jpg"
-      ));
+    ));
     _goFeaturedFoodList.add(new Food(
-            title: "Tengkleng Hohah",
-            image: "assets/images/food_3.jpg"
-        ));
+        title: "Tengkleng Hohah",
+        image: "assets/images/food_3.jpg"
+    ));
     _goFeaturedFoodList.add(new Food(
-            title: "Warung Steak",
-            image: "assets/images/food_4.jpg"
-        ));
+        title: "Warung Steak",
+        image: "assets/images/food_4.jpg"
+    ));
     _goFeaturedFoodList.add(new Food(
-            title: "Kindai Warung Banjar",
-            image: "assets/images/food_5.jpg"
-        ));
+        title: "Kindai Warung Banjar",
+        image: "assets/images/food_5.jpg"
+    ));
+
+    return new Future.delayed(new Duration(seconds: 1), () {
+      return _goFeaturedFoodList;
+    });
   }
 
   @override
@@ -135,6 +145,17 @@ class _HomePageState extends State<HomePage> {
       child: new Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          new GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () {
+              showModalBottomSheet<void>(
+                  context: context,
+                  builder: (context) {
+                    return _buildMenuBottomSheet();
+                  }
+              );
+            },
+          ),
           new Container(
             decoration: new BoxDecoration(
               border: Border.all(color: GojekPalette.grey200, width: 1.0),
@@ -355,5 +376,64 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
+  }
+
+  Widget _buildMenuBottomSheet() {
+    return new StatefulBuilder(builder: (c, s) {
+      return new SafeArea(
+          child: new Container(
+            padding: EdgeInsets.only(left: 16.0, right: 16.0),
+            width: double.infinity,
+            decoration: new BoxDecoration(
+              borderRadius: BorderRadius.circular(4.0),
+                color: Colors.white
+            ),
+            child: new Column(
+              children: <Widget>[
+                new Icon(
+                  Icons.drag_handle,
+                  color: GojekPalette.grey,
+                ),
+                new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    new Text(
+                      "GO-JEK Services",
+                      style: new TextStyle(
+                          fontFamily: "NeoSansMedium",
+                          fontSize: 18.0
+                      ),
+                    ),
+                    new OutlineButton(
+                      color: GojekPalette.green,
+                      onPressed: () {},
+                      child: new Text(
+                        "EDIT FAVORITES",
+                        style: new TextStyle(
+                          fontSize: 12.0,
+                          color: GojekPalette.green,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                new Container(
+                  height: 300.0,
+                  child: new GridView.builder(
+                      physics: new NeverScrollableScrollPhysics(),
+                      itemCount: _gojekServiceList.length,
+                      gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 4
+                      ),
+                      itemBuilder: (context, position) {
+                        return _rowGojekService(_gojekServiceList[position]);
+                      }
+                  ),
+                )
+              ],
+            ),
+          )
+      );
+    });
   }
 }
