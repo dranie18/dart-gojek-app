@@ -10,7 +10,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<MainServices> _gojekServiceList = [];
-  List<Food> _goFeaturedFoodList = [];
 
   @override
   void initState() {
@@ -72,8 +71,6 @@ class _HomePageState extends State<HomePage> {
       title: "GO-TIX",
     ));
 
-
-
   }
 
   Future<List<Food>> fetchFood() async {
@@ -99,7 +96,7 @@ class _HomePageState extends State<HomePage> {
         image: "assets/images/food_5.jpg"
     ));
 
-    return new Future.delayed(new Duration(seconds: 1), () {
+    return new Future.delayed(new Duration(seconds: 3), () {
       return _goFeaturedFoodList;
     });
   }
@@ -152,24 +149,25 @@ class _HomePageState extends State<HomePage> {
                   context: context,
                   builder: (context) {
                     return _buildMenuBottomSheet();
-                  }
-              );
+                  });
             },
-          ),
-          new Container(
-            decoration: new BoxDecoration(
-              border: Border.all(color: GojekPalette.grey200, width: 1.0),
-              borderRadius: new BorderRadius.all(new Radius.circular(20.0))
+            child: new Container(
+              decoration: new BoxDecoration(
+                  border: Border.all(color: GojekPalette.grey200, width: 1.0),
+                  borderRadius:
+                  new BorderRadius.all(new Radius.circular(20.0))),
+              padding: EdgeInsets.all(12.0),
+              child: new Icon(
+                gojekService.image,
+                color: gojekService.color,
+                size: 32.0,
+              ),
             ),
-            padding: EdgeInsets.all(12.0),
-            child: new Icon(
-              gojekService.image,
-              color: gojekService.color,
-              size: 32.0,
-            ),
           ),
-          new Padding(padding: EdgeInsets.only(top: 6.0)),
-          new Text(gojekService.title, style: new TextStyle(fontSize: 10.0),)
+          new Padding(
+            padding: EdgeInsets.only(top: 6.0),
+          ),
+          new Text(gojekService.title, style: new TextStyle(fontSize: 10.0))
         ],
       ),
     );
@@ -363,13 +361,27 @@ class _HomePageState extends State<HomePage> {
           ),
           new SizedBox(
             height: 172.0,
-            child: new ListView.builder(
-                itemCount: _goFeaturedFoodList.length,
-                padding: EdgeInsets.only(top: 12.0),
-                physics: new ClampingScrollPhysics(),
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return _rowGoFoodFeatured(_goFeaturedFoodList[index]);
+            child: new FutureBuilder<List>(
+                future: fetchFood(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return new ListView.builder(
+                        itemCount: snapshot.data.length,
+                        padding: EdgeInsets.only(top: 12.0),
+                        physics: new ClampingScrollPhysics(),
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return _rowGoFoodFeatured(snapshot.data[index]);
+                        });
+                  }
+
+                  return Center(
+                    child: SizedBox(
+                      width: 40.0,
+                      height: 40.0,
+                      child: const CircularProgressIndicator(),
+                    ),
+                  );
                 }
             ),
           )
