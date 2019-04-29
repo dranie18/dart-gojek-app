@@ -9,63 +9,63 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<MainServices> _gojekServiceList = [];
+  List<AppServices> _gojekServiceList = [];
 
   @override
   void initState() {
     super.initState();
 
-    _gojekServiceList.add(new MainServices(
+    _gojekServiceList.add(new AppServices(
       image: Icons.directions_bike,
       color: GojekPalette.menuRide,
       title: "GO-RIDE",
     ));
-    _gojekServiceList.add(new MainServices(
+    _gojekServiceList.add(new AppServices(
       image: Icons.local_car_wash,
       color: GojekPalette.menuCar,
       title: "GO-CAR",
     ));
-    _gojekServiceList.add(new MainServices(
+    _gojekServiceList.add(new AppServices(
       image: Icons.directions_car,
       color: GojekPalette.menuBluebird,
       title: "GO-BLUEBIRD",
     ));
-    _gojekServiceList.add(new MainServices(
+    _gojekServiceList.add(new AppServices(
       image: Icons.restaurant,
       color: GojekPalette.menuFood,
       title: "GO-FOOD",
     ));
-    _gojekServiceList.add(new MainServices(
+    _gojekServiceList.add(new AppServices(
       image: Icons.next_week,
       color: GojekPalette.menuSend,
       title: "GO-SEND",
     ));
-    _gojekServiceList.add(new MainServices(
+    _gojekServiceList.add(new AppServices(
       image: Icons.local_offer,
       color: GojekPalette.menuDeals,
       title: "GO-DEALS",
     ));
-    _gojekServiceList.add(new MainServices(
+    _gojekServiceList.add(new AppServices(
       image: Icons.phonelink_ring,
       color: GojekPalette.menuPulsa,
       title: "GO-PULSA",
     ));
-    _gojekServiceList.add(new MainServices(
+    _gojekServiceList.add(new AppServices(
       image: Icons.apps,
       color: GojekPalette.menuOther,
       title: "OTHERS",
     ));
-    _gojekServiceList.add(new MainServices(
+    _gojekServiceList.add(new AppServices(
       image: Icons.shopping_basket,
       color: GojekPalette.menuShop,
       title: "GO-SHOP",
     ));
-    _gojekServiceList.add(new MainServices(
+    _gojekServiceList.add(new AppServices(
       image: Icons.shopping_cart,
       color: GojekPalette.menuMart,
       title: "GO-MART",
     ));
-    _gojekServiceList.add(new MainServices(
+    _gojekServiceList.add(new AppServices(
       image: Icons.local_play,
       color: GojekPalette.menuTix,
       title: "GO-TIX",
@@ -137,7 +137,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _rowGojekService(MainServices gojekService) {
+  Widget _rowGojekService(AppServices gojekService) {
     return new Container(
       child: new Column(
         mainAxisAlignment: MainAxisAlignment.center,

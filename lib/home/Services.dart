@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class MainServices {
+class AppServices {
   IconData image;
   String title;
   Color color;
 
-  MainServices({this.image, this.title, this.color});
+  AppServices({this.image, this.title, this.color});
 }
 
 class Food {
