@@ -118,28 +118,20 @@ class _HomePageState extends State<HomePage> {
           new GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: () {
-              showModalBottomSheet<void>(
-                  context: context,
-                  builder: (context) {
+              showModalBottomSheet<void>(context: context, builder: (context) {
                     return _buildMenuBottomSheet();
                   });
             },
             child: new Container(
               decoration: new BoxDecoration(
                   border: Border.all(color: GojekPalette.grey200, width: 1.0),
-                  borderRadius:
-                  new BorderRadius.all(new Radius.circular(20.0))),
+                  borderRadius: new BorderRadius.all(new Radius.circular(20.0))),
               padding: EdgeInsets.all(12.0),
-              child: new Icon(
-                appService.image,
-                color: appService.color,
-                size: 32.0,
+              child: new Icon(appService.image, color: appService.color, size: 32.0,
               ),
             ),
           ),
-          new Padding(
-            padding: EdgeInsets.only(top: 6.0),
-          ),
+          new Padding(padding: EdgeInsets.only(top: 6.0)),
           new Text(appService.title, style: new TextStyle(fontSize: 10.0))
         ],
       ),
@@ -151,14 +143,7 @@ class _HomePageState extends State<HomePage> {
       margin: EdgeInsets.only(right: 16.0),
       child: new Column(
         children: <Widget>[
-          new ClipRRect(
-            borderRadius: new BorderRadius.circular(8.0),
-            child: new Image.asset(
-              food.image,
-              width: 132.0,
-              height: 132.0,
-            ),
-          ),
+          new ClipRRect(borderRadius: new BorderRadius.circular(8.0), child: new Image.asset(food.image, width: 132.0, height: 132.0)),
           new Padding(padding: EdgeInsets.only(top: 8.0)),
           new Text(food.title),
         ],
@@ -170,11 +155,7 @@ class _HomePageState extends State<HomePage> {
     return new Container(
       height: 120.0,
       decoration: new BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [const Color(0xff3164bd), const Color(0xff295cb5)],
-        ),
+        gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Color(0xff3164bd), Color(0xff295cb5)]),
         borderRadius: new BorderRadius.all(new Radius.circular(3.0))
       ),
       child: new Column(
@@ -183,37 +164,14 @@ class _HomePageState extends State<HomePage> {
          new Container(
            padding: EdgeInsets.all(12.0),
            decoration: new BoxDecoration(
-             gradient: LinearGradient(
-                 begin: Alignment.topCenter,
-                 end: Alignment.bottomCenter,
-                 colors: [const Color(0xff3164bd), const Color(0xff295cb5)],
-             ),
-             borderRadius: new BorderRadius.only(
-               topLeft: new Radius.circular(3.0),
-               topRight: new Radius.circular(3.0)
-             )
+             gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Color(0xff3164bd), Color(0xff295cb5)]),
+             borderRadius: new BorderRadius.only(topLeft: new Radius.circular(3.0), topRight: new Radius.circular(3.0))
            ),
            child: new Row(
              mainAxisAlignment: MainAxisAlignment.spaceBetween,
              children: <Widget>[
-               new Text(
-                 "GOPAY",
-                 style: new TextStyle(
-                     fontSize: 18.0,
-                     color: Colors.white,
-                     fontFamily: "NeoSansMedium"
-                 ),
-               ),
-               new Container(
-                 child: new Text(
-                   "Rp 120.000",
-                   style: new TextStyle(
-                     fontSize: 14.0,
-                     color: Colors.white,
-                     fontFamily: "NeoSansMedium",
-                   ),
-                 ),
-               )
+               new Text("GOPAY", style: new TextStyle(fontSize: 18.0, color: Colors.white, fontFamily: "NeoSansMedium")),
+               new Container(child: new Text("Rp 120.000", style: new TextStyle(fontSize: 14.0, color: Colors.white, fontFamily: "NeoSansMedium")))
              ],
            ),
          ),
@@ -222,72 +180,35 @@ class _HomePageState extends State<HomePage> {
            child: new Row(
              mainAxisAlignment: MainAxisAlignment.spaceBetween,
              children: <Widget>[
-               new Column(
-                 mainAxisAlignment: MainAxisAlignment.center,
+               new Column(mainAxisAlignment: MainAxisAlignment.center,
                  children: <Widget>[
-                   new Image.asset(
-                     "assets/icons/icon_transfer.png",
-                     width: 32.0,
-                     height: 32.0,
-                   ),
-                   new Padding(
-                       padding: EdgeInsets.only(top: 10.0)
-                   ),
-                   new Text(
-                     "Transfer",
-                     style: TextStyle(color: Colors.white, fontSize: 12.0),
-                   )
+                   new Image.asset("assets/icons/icon_transfer.png", width: 32.0, height: 32.0),
+                   new Padding(padding: EdgeInsets.only(top: 10.0)),
+                   new Text("Transfer", style: TextStyle(color: Colors.white, fontSize: 12.0))
                  ],
                ),
                new Column(
                  mainAxisAlignment: MainAxisAlignment.center,
                  children: <Widget>[
-                   new Image.asset(
-                     "assets/icons/icon_scan.png",
-                     width: 32.0,
-                     height: 32.0,
-                   ),
-                   new Padding(
-                     padding: EdgeInsets.only(top: 10.0),
-                   ),
-                   new Text(
-                     "Scan QR",
-                     style: TextStyle(color: Colors.white),
-                   )
+                   new Image.asset("assets/icons/icon_scan.png", width: 32.0, height: 32.0),
+                   new Padding(padding: EdgeInsets.only(top: 10.0)),
+                   new Text("Scan QR", style: TextStyle(color: Colors.white))
                  ],
                ),
                new Column(
                  mainAxisAlignment: MainAxisAlignment.center,
                  children: <Widget>[
-                   new Image.asset(
-                     "assets/icons/icon_saldo.png",
-                     width: 32.0,
-                     height: 32.0,
-                   ),
-                   new Padding(
-                       padding: EdgeInsets.only(top: 10.0),
-                   ),
-                   new Text(
-                     "Balance",
-                     style: TextStyle(color: Colors.white, fontSize: 12.0),
-                   )
+                   new Image.asset("assets/icons/icon_saldo.png", width: 32.0, height: 32.0),
+                   new Padding(padding: EdgeInsets.only(top: 10.0)),
+                   new Text("Balance", style: TextStyle(color: Colors.white, fontSize: 12.0))
                  ],
                ),
                new Column(
                  mainAxisAlignment: MainAxisAlignment.center,
                  children: <Widget>[
-                   new Image.asset(
-                     "assets/icons/icon_menu.png",
-                     width: 32.0,
-                     height: 32.0,
-                   ),
-                   new Padding(
-                     padding: EdgeInsets.only(top: 10.0),
-                   ),
-                   new Text(
-                     "Others",
-                     style: TextStyle(color: Colors.white, fontSize: 12.0),
-                   )
+                   new Image.asset("assets/icons/icon_menu.png", width: 32.0, height: 32.0),
+                   new Padding(padding: EdgeInsets.only(top: 10.0),),
+                   new Text("Others", style: TextStyle(color: Colors.white, fontSize: 12.0))
                  ],
                )
              ],
@@ -307,9 +228,7 @@ class _HomePageState extends State<HomePage> {
         child: GridView.builder(
             physics: ClampingScrollPhysics(),
             itemCount: 8,
-            gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 4
-            ),
+            gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
             itemBuilder: (context, position) {
               return _rowAppService(_appServiceList[position]);
             }),
@@ -323,15 +242,9 @@ class _HomePageState extends State<HomePage> {
       child: new Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          new Text(
-            "GO-FOOD",
-            style: new TextStyle(fontFamily: "NeoSansMedium"),
-          ),
+          new Text("GO-FOOD", style: new TextStyle(fontFamily: "NeoSansMedium")),
           new Padding(padding: EdgeInsets.only(top: 8.0)),
-          new Text(
-            "Pilihan Terlaris",
-            style: new TextStyle(fontFamily: "NeoSansMedium"),
-          ),
+          new Text("Pilihan Terlaris", style: new TextStyle(fontFamily: "NeoSansMedium")),
           new SizedBox(
             height: 172.0,
             child: new FutureBuilder<List>(
@@ -347,7 +260,6 @@ class _HomePageState extends State<HomePage> {
                           return _rowGoFoodFeatured(snapshot.data[index]);
                         });
                   }
-
                   return Center(
                     child: SizedBox(
                       width: 40.0,
@@ -369,36 +281,18 @@ class _HomePageState extends State<HomePage> {
           child: new Container(
             padding: EdgeInsets.only(left: 16.0, right: 16.0),
             width: double.infinity,
-            decoration: new BoxDecoration(
-              borderRadius: BorderRadius.circular(4.0),
-                color: Colors.white
-            ),
+            decoration: new BoxDecoration(borderRadius: BorderRadius.circular(4.0), color: Colors.white),
             child: new Column(
               children: <Widget>[
-                new Icon(
-                  Icons.drag_handle,
-                  color: GojekPalette.grey,
-                ),
+                new Icon(Icons.drag_handle, color: GojekPalette.grey,),
                 new Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    new Text(
-                      "GO-JEK Services",
-                      style: new TextStyle(
-                          fontFamily: "NeoSansMedium",
-                          fontSize: 18.0
-                      ),
-                    ),
+                    new Text("GO-JEK Services", style: new TextStyle(fontFamily: "NeoSansMedium", fontSize: 18.0)),
                     new OutlineButton(
                       color: GojekPalette.green,
                       onPressed: () {},
-                      child: new Text(
-                        "EDIT FAVORITES",
-                        style: new TextStyle(
-                          fontSize: 12.0,
-                          color: GojekPalette.green,
-                        ),
-                      ),
+                      child: new Text("EDIT FAVORITES", style: new TextStyle(fontSize: 12.0, color: GojekPalette.green)),
                     ),
                   ],
                 ),
@@ -407,9 +301,7 @@ class _HomePageState extends State<HomePage> {
                   child: new GridView.builder(
                       physics: new NeverScrollableScrollPhysics(),
                       itemCount: _appServiceList.length,
-                      gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 4
-                      ),
+                      gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
                       itemBuilder: (context, position) {
                         return _rowAppService(_appServiceList[position]);
                       }
