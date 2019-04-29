@@ -1,8 +1,11 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:gojek/account/AccountPage.dart';
 import 'package:gojek/constant.dart';
 import 'package:gojek/home/HomePage.dart';
+import 'package:gojek/inbox/InboxPage.dart';
+import 'package:gojek/order/OrderPage.dart';
 
 class LandingPage extends StatefulWidget {
   @override
@@ -13,6 +16,9 @@ class _LandingPageState extends State<LandingPage> {
   int _bottomNavCurrentIndex = 0;
   List<Widget> _container = [
     new HomePage(),
+    new OrderPage(),
+    new InboxPage(),
+    new AccountPage()
   ];
 
   @override

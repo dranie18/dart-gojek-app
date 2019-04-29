@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gojek/constant.dart';
 import 'package:gojek/home/AppBar.dart';
-import 'package:gojek/home/Services.dart';
+import 'package:gojek/Model.dart';
+import 'package:gojek/services/Main.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -9,96 +10,68 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<AppServices> _gojekServiceList = [];
+  List<AppServices> _appServiceList = [];
 
   @override
   void initState() {
     super.initState();
 
-    _gojekServiceList.add(new AppServices(
+    _appServiceList.add(new AppServices(
       image: Icons.directions_bike,
       color: GojekPalette.menuRide,
       title: "GO-RIDE",
     ));
-    _gojekServiceList.add(new AppServices(
+    _appServiceList.add(new AppServices(
       image: Icons.local_car_wash,
       color: GojekPalette.menuCar,
       title: "GO-CAR",
     ));
-    _gojekServiceList.add(new AppServices(
+    _appServiceList.add(new AppServices(
       image: Icons.directions_car,
       color: GojekPalette.menuBluebird,
       title: "GO-BLUEBIRD",
     ));
-    _gojekServiceList.add(new AppServices(
+    _appServiceList.add(new AppServices(
       image: Icons.restaurant,
       color: GojekPalette.menuFood,
       title: "GO-FOOD",
     ));
-    _gojekServiceList.add(new AppServices(
+    _appServiceList.add(new AppServices(
       image: Icons.next_week,
       color: GojekPalette.menuSend,
       title: "GO-SEND",
     ));
-    _gojekServiceList.add(new AppServices(
+    _appServiceList.add(new AppServices(
       image: Icons.local_offer,
       color: GojekPalette.menuDeals,
       title: "GO-DEALS",
     ));
-    _gojekServiceList.add(new AppServices(
+    _appServiceList.add(new AppServices(
       image: Icons.phonelink_ring,
       color: GojekPalette.menuPulsa,
       title: "GO-PULSA",
     ));
-    _gojekServiceList.add(new AppServices(
+    _appServiceList.add(new AppServices(
       image: Icons.apps,
       color: GojekPalette.menuOther,
       title: "OTHERS",
     ));
-    _gojekServiceList.add(new AppServices(
+    _appServiceList.add(new AppServices(
       image: Icons.shopping_basket,
       color: GojekPalette.menuShop,
       title: "GO-SHOP",
     ));
-    _gojekServiceList.add(new AppServices(
+    _appServiceList.add(new AppServices(
       image: Icons.shopping_cart,
       color: GojekPalette.menuMart,
       title: "GO-MART",
     ));
-    _gojekServiceList.add(new AppServices(
+    _appServiceList.add(new AppServices(
       image: Icons.local_play,
       color: GojekPalette.menuTix,
       title: "GO-TIX",
     ));
 
-  }
-
-  Future<List<Food>> fetchFood() async {
-    List<Food> _goFeaturedFoodList = [];
-    _goFeaturedFoodList.add(new Food(
-        title: "Steak Andakar",
-        image: "assets/images/food_1.jpg"
-    ));
-    _goFeaturedFoodList.add(new Food(
-        title: "Mie Ayam Tumini",
-        image: "assets/images/food_2.jpg"
-    ));
-    _goFeaturedFoodList.add(new Food(
-        title: "Tengkleng Hohah",
-        image: "assets/images/food_3.jpg"
-    ));
-    _goFeaturedFoodList.add(new Food(
-        title: "Warung Steak",
-        image: "assets/images/food_4.jpg"
-    ));
-    _goFeaturedFoodList.add(new Food(
-        title: "Kindai Warung Banjar",
-        image: "assets/images/food_5.jpg"
-    ));
-
-    return new Future.delayed(new Duration(seconds: 3), () {
-      return _goFeaturedFoodList;
-    });
   }
 
   @override
@@ -116,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.white,
                   child: new Column(
                     children: <Widget>[
-                      _buildGopayMenu(),
+                      _buildHeaderMenu(),
                       _buildServicesMenu()
                     ],
                   ),
@@ -137,7 +110,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _rowGojekService(AppServices gojekService) {
+  Widget _rowAppService(AppServices appService) {
     return new Container(
       child: new Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -158,8 +131,8 @@ class _HomePageState extends State<HomePage> {
                   new BorderRadius.all(new Radius.circular(20.0))),
               padding: EdgeInsets.all(12.0),
               child: new Icon(
-                gojekService.image,
-                color: gojekService.color,
+                appService.image,
+                color: appService.color,
                 size: 32.0,
               ),
             ),
@@ -167,7 +140,7 @@ class _HomePageState extends State<HomePage> {
           new Padding(
             padding: EdgeInsets.only(top: 6.0),
           ),
-          new Text(gojekService.title, style: new TextStyle(fontSize: 10.0))
+          new Text(appService.title, style: new TextStyle(fontSize: 10.0))
         ],
       ),
     );
@@ -193,7 +166,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildGopayMenu() {
+  Widget _buildHeaderMenu() {
     return new Container(
       height: 120.0,
       decoration: new BoxDecoration(
@@ -338,7 +311,7 @@ class _HomePageState extends State<HomePage> {
                 crossAxisCount: 4
             ),
             itemBuilder: (context, position) {
-              return _rowGojekService(_gojekServiceList[position]);
+              return _rowAppService(_appServiceList[position]);
             }),
       ),
     );
@@ -433,12 +406,12 @@ class _HomePageState extends State<HomePage> {
                   height: 300.0,
                   child: new GridView.builder(
                       physics: new NeverScrollableScrollPhysics(),
-                      itemCount: _gojekServiceList.length,
+                      itemCount: _appServiceList.length,
                       gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 4
                       ),
                       itemBuilder: (context, position) {
-                        return _rowGojekService(_gojekServiceList[position]);
+                        return _rowAppService(_appServiceList[position]);
                       }
                   ),
                 )
