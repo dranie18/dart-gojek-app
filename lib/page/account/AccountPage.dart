@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
 
-class InboxPage extends StatelessWidget {
+class AccountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold();

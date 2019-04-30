@@ -1,11 +1,11 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:gojek/account/AccountPage.dart';
 import 'package:gojek/constant.dart';
-import 'package:gojek/home/HomePage.dart';
-import 'package:gojek/inbox/InboxPage.dart';
-import 'package:gojek/order/OrderPage.dart';
+import 'package:gojek/page/account/AccountPage.dart';
+import 'package:gojek/page/home/HomePage.dart';
+import 'package:gojek/page/inbox/InboxPage.dart';
+import 'package:gojek/page/order/OrderPage.dart';
 
 class LandingPage extends StatefulWidget {
   @override

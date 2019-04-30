@@ -22,8 +22,17 @@ Future<List<Food>> fetchFood() async {
       title: "Kindai Warung Banjar",
       image: "assets/images/food_5.jpg"
   ));
-
   return new Future.delayed(new Duration(seconds: 3), () {
     return _goFeaturedFoodList;
+  });
+}
+
+String fetchUrls = '';
+
+Future<List<Order>> fetchOrder() async {
+  List<Order> _orderList = [];
+//  final response = await http.get('$fetchUrls');
+  return new Future.delayed(new Duration(seconds: 3), () {
+    return _orderList;
   });
 }

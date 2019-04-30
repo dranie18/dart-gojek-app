@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gojek/constant.dart';
-import 'package:gojek/home/AppBar.dart';
 import 'package:gojek/Model.dart';
+import 'package:gojek/constant.dart';
+import 'package:gojek/landing/AppBar.dart';
 import 'package:gojek/services/Main.dart';
 
 class HomePage extends StatefulWidget {
@@ -90,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                   child: new Column(
                     children: <Widget>[
                       _buildHeaderMenu(),
-                      _buildServicesMenu()
+                      _buildServicesMenu(),
                     ],
                   ),
                 ),
@@ -119,8 +119,8 @@ class _HomePageState extends State<HomePage> {
             behavior: HitTestBehavior.opaque,
             onTap: () {
               showModalBottomSheet<void>(context: context, builder: (context) {
-                    return _buildMenuBottomSheet();
-                  });
+                return _buildMenuBottomSheet();
+              });
             },
             child: new Container(
               decoration: new BoxDecoration(
@@ -260,13 +260,7 @@ class _HomePageState extends State<HomePage> {
                           return _rowGoFoodFeatured(snapshot.data[index]);
                         });
                   }
-                  return Center(
-                    child: SizedBox(
-                      width: 40.0,
-                      height: 40.0,
-                      child: const CircularProgressIndicator(),
-                    ),
-                  );
+                  return Center(child: SizedBox(width: 40.0, height: 40.0, child: const CircularProgressIndicator()));
                 }
             ),
           )
@@ -284,7 +278,7 @@ class _HomePageState extends State<HomePage> {
             decoration: new BoxDecoration(borderRadius: BorderRadius.circular(4.0), color: Colors.white),
             child: new Column(
               children: <Widget>[
-                new Icon(Icons.drag_handle, color: GojekPalette.grey,),
+                new Icon(Icons.drag_handle, color: GojekPalette.grey),
                 new Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[

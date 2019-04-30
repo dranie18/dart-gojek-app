@@ -13,3 +13,21 @@ class Food {
   String image;
   Food({this.title, this.image});
 }
+
+class Order {
+  String title;
+
+  Order({this.title});
+
+  factory Order.fromJson(Map<String, dynamic> parsedJson) {
+    return Order(
+      title: parsedJson['title'],
+    );
+  }
+
+  Order fromJson(String str) {
+//    final jsonData = json.decode(str);
+//    return Order.fromJson(jsonData);
+    return Order(title: str);
+  }
+}
